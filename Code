@@ -1,0 +1,20 @@
+#import openai library
+import openai
+
+#set up openai api client
+openai.api_key = "xxxxxxxxx222222211111111111"
+
+#loop will ask questions continually 
+while True:
+    #set up model and prompt
+    model_engine = "text-davinci-003"
+    prompt = input('Hello, you may ask your question: ')
+    if 'exit' in prompt or 'quit' in prompt:
+        break
+    completion = openai.Completion.create(
+        engine = model_engine, prompt=prompt, max_tokens =1024, n=1, stop=None, temperature=0.5)
+    #extracting useful part of response
+    response = completion.choices[0].text
+    
+    #print response
+    print(response)
